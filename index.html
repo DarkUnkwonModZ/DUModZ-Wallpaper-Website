@@ -3,399 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DUModZ Wallpapers - Premium 4K Gallery</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Animate.css for smooth entrance -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <title>DUModZ | Ultra HD Wallpapers</title>
     
+    <!-- External Resources -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
     <style>
         :root {
-            --primary: #00f2fe;
-            --secondary: #4facfe;
-            --dark: #0a0b10;
-            --card-bg: #161b22;
-            --text-main: #ffffff;
-            --text-dim: #b1b1b1;
-            --glass: rgba(255, 255, 255, 0.05);
+            --accent: #00ffcc;
+            --gradient: linear-gradient(135deg, #00ffcc 0%, #3366ff 100%);
+            --dark-bg: #05070a;
+            --card-bg: #0f121a;
+            --glass: rgba(255, 255, 255, 0.03);
+            --text: #e0e0e0;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
 
         body {
-            background-color: var(--dark);
-            color: var(--text-main);
-            line-height: 1.6;
+            background-color: var(--dark-bg);
+            color: var(--text);
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        /* --- Custom Scrollbar --- */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--dark); }
-        ::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 10px; }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: var(--gradient); border-radius: 10px; }
 
-        /* --- Header & Hero Section --- */
-        header {
-            min-height: 60vh;
-            background: linear-gradient(rgba(10, 11, 16, 0.7), rgba(10, 11, 16, 0.9)), 
-                        url('https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            border-bottom: 1px solid var(--glass);
+        /* Background Animated Glow */
+        .bg-glow {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1a1f35 0%, #05070a 100%);
+            z-index: -1;
         }
 
-        .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -1px;
-        }
-
-        .search-box {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-top: 30px;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 18px 25px 18px 55px;
-            border-radius: 50px;
-            border: 1px solid var(--glass);
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            color: white;
-            font-size: 1.1rem;
-            outline: none;
-            transition: 0.3s;
-        }
-
-        .search-box input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
-        }
-
-        .search-box i {
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-
-        /* --- Dynamic Categories --- */
-        .category-container {
-            padding: 40px 20px 20px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .cat-chip {
-            padding: 10px 22px;
-            background: var(--glass);
-            border: 1px solid var(--glass);
-            border-radius: 30px;
-            cursor: pointer;
-            color: var(--text-dim);
-            transition: 0.3s;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .cat-chip:hover, .cat-chip.active {
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            color: #000;
-            border-color: transparent;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
-        }
-
-        /* --- Wallpaper Grid --- */
-        .main-container {
-            max-width: 1400px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-            border: 1px solid var(--glass);
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-
-        .card-img-wrapper {
-            position: relative;
-            height: 400px;
-            overflow: hidden;
-            cursor: zoom-in;
-        }
-
-        .card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.5s;
-        }
-
-        .card:hover img {
-            transform: scale(1.1);
-        }
-
-        .card-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 20px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        /* --- Header Section --- */
+        nav {
+            padding: 20px 5%;
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
-            opacity: 0;
-            transition: 0.3s;
-        }
-
-        .card:hover .card-overlay {
-            opacity: 1;
-        }
-
-        .card-info h3 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-
-        .card-info span {
-            font-size: 0.8rem;
-            color: var(--primary);
-            text-transform: uppercase;
-        }
-
-        .btn-download {
-            width: 45px;
-            height: 45px;
-            background: var(--primary);
-            color: #000;
-            border-radius: 50%;
-            display: flex;
             align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: 0.3s;
+            backdrop-filter: blur(15px);
+            position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .btn-download:hover {
-            transform: rotate(360deg);
-            background: #fff;
+        .logo { font-size: 1.8rem; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        header {
+            text-align: center;
+            padding: 80px 20px;
+            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
         }
 
-        /* --- Advanced Modal (Preview) --- */
-        #previewModal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95);
-            z-index: 2000;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(10px);
+        .hero-title { font-size: 4rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -2px; }
+        .hero-sub { color: #888; font-size: 1.1rem; margin-bottom: 30px; }
+
+        .search-area {
+            max-width: 700px; margin: 0 auto; position: relative;
         }
 
-        .modal-img {
-            max-width: 90%;
-            max-height: 80vh;
-            border-radius: 10px;
-            box-shadow: 0 0 50px rgba(0,0,0,0.5);
-            object-fit: contain;
+        .search-area input {
+            width: 100%; padding: 20px 30px 20px 60px; border-radius: 100px;
+            border: 1px solid rgba(255,255,255,0.1); background: var(--glass);
+            color: #fff; font-size: 1.1rem; outline: none; transition: 0.4s;
         }
 
-        .modal-controls {
-            margin-top: 20px;
-            display: flex;
-            gap: 20px;
+        .search-area input:focus { border-color: var(--accent); box-shadow: 0 0 30px rgba(0,255,204,0.15); }
+        .search-area i { position: absolute; left: 25px; top: 50%; transform: translateY(-50%); color: var(--accent); }
+
+        /* --- Category Pills --- */
+        .cats {
+            display: flex; justify-content: center; gap: 15px; margin: 30px 0; flex-wrap: wrap;
         }
 
-        .m-btn {
-            padding: 12px 30px;
-            border-radius: 50px;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.3s;
+        .cat-pill {
+            padding: 10px 25px; border-radius: 50px; background: var(--glass);
+            cursor: pointer; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s;
+            font-size: 0.9rem; font-weight: 600;
         }
 
-        .m-close { background: #ff4757; color: white; }
-        .m-dl { background: var(--primary); color: #000; text-decoration: none; }
+        .cat-pill.active, .cat-pill:hover { background: var(--gradient); color: #000; transform: translateY(-3px); }
 
-        /* --- Loading Spinner --- */
-        .loader {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 200px;
-            width: 100%;
+        /* --- Wallpaper Grid & Cards --- */
+        .container { max-width: 1500px; margin: 0 auto; padding: 20px; }
+
+        .grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px;
         }
 
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid var(--glass);
-            border-top: 5px solid var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+        /* Card Styling */
+        .wp-card {
+            background: var(--card-bg); border-radius: 24px; overflow: hidden;
+            position: relative; transition: 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+            border: 1px solid rgba(255,255,255,0.03);
         }
 
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .wp-card:hover { transform: translateY(-10px); border-color: rgba(0,255,204,0.3); }
 
-        /* --- Responsive --- */
+        .img-container {
+            position: relative; width: 100%; height: 450px; background: #161b22; overflow: hidden;
+        }
+
+        /* Skeleton Loader */
+        .skeleton {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, #0f121a 25%, #1d212b 50%, #0f121a 75%);
+            background-size: 200% 100%; animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+        .wp-card img {
+            width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: 0.5s;
+        }
+
+        .wp-card:hover img { transform: scale(1.1); }
+
+        /* Card Actions */
+        .card-actions {
+            position: absolute; bottom: 0; left: 0; right: 0; padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            display: flex; justify-content: space-between; align-items: center;
+            transform: translateY(20px); opacity: 0; transition: 0.3s;
+        }
+
+        .wp-card:hover .card-actions { transform: translateY(0); opacity: 1; }
+
+        .btn-circle {
+            width: 45px; height: 45px; border-radius: 50%; background: #fff; color: #000;
+            display: flex; align-items: center; justify-content: center; text-decoration: none;
+            cursor: pointer; transition: 0.3s; border: none; font-size: 1.1rem;
+        }
+
+        .btn-circle:hover { background: var(--accent); transform: scale(1.1); }
+        .btn-fav.active { color: #ff4757; }
+
+        /* --- Fullscreen Lightbox --- */
+        .modal {
+            display: none; position: fixed; top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.95); z-index: 2000; backdrop-filter: blur(15px);
+            justify-content: center; align-items: center; flex-direction: column;
+        }
+
+        .modal-img { max-width: 90%; max-height: 75vh; border-radius: 15px; box-shadow: 0 0 50px rgba(0,0,0,0.5); }
+
+        .modal-info { margin-top: 25px; text-align: center; }
+        .modal-btn {
+            padding: 15px 40px; border-radius: 100px; background: var(--gradient);
+            color: #000; text-decoration: none; font-weight: 700; margin: 10px; display: inline-block;
+        }
+
+        .close-modal { position: absolute; top: 30px; right: 30px; font-size: 2rem; cursor: pointer; }
+
+        /* --- Mobile Responsive --- */
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.2rem; }
-            header { min-height: 40vh; }
+            .hero-title { font-size: 2.5rem; }
             .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
-            .card-img-wrapper { height: 250px; }
-            .card-info h3 { font-size: 0.9rem; }
+            .img-container { height: 280px; }
         }
     </style>
 </head>
 <body>
 
+    <div class="bg-glow"></div>
+
+    <nav>
+        <div class="logo">DUModZ GALLERY</div>
+        <div class="nav-right">
+            <button class="cat-pill" id="favCount" onclick="showFavorites()">❤️ Favorites (0)</button>
+        </div>
+    </nav>
+
     <header>
-        <div class="hero-content animate__animated animate__fadeInDown">
-            <h1>DUModZ Premium Gallery</h1>
-            <p>High Quality Wallpapers for your Devices</p>
-            <div class="search-box">
+        <div class="animate__animated animate__fadeInUp">
+            <h1 class="hero-title">Elevate Your Screen</h1>
+            <p class="hero-sub">Discover thousands of premium 4K wallpapers for free.</p>
+            <div class="search-area">
                 <i class="fas fa-search"></i>
-                <input type="text" id="searchInput" placeholder="Search by name or category...">
+                <input type="text" id="mainSearch" placeholder="Search for wallpapers (Nature, Dark, Anime)...">
             </div>
         </div>
     </header>
 
-    <div class="category-container animate__animated animate__fadeIn" id="categoryTabs">
-        <div class="cat-chip active" onclick="filterData('All')">All Collection</div>
-        <!-- Categories will load dynamically -->
+    <div class="cats animate__animated animate__fadeIn" id="dynamicCats">
+        <div class="cat-pill active" onclick="filterData('All')">All</div>
     </div>
 
-    <main class="main-container">
-        <div class="grid" id="wallpaperGrid">
-            <div class="loader"><div class="spinner"></div></div>
-        </div>
-    </main>
-
-    <!-- Image Preview Modal -->
-    <div id="previewModal">
-        <img src="" alt="Preview" class="modal-img" id="modalImg">
-        <div class="modal-controls">
-            <button class="m-btn m-close" onclick="closePreview()"><i class="fas fa-times"></i> Close</button>
-            <a href="" id="modalDlLink" download class="m-btn m-dl"><i class="fas fa-download"></i> Download HD</a>
+    <div class="container">
+        <div class="grid" id="mainGrid">
+            <!-- Wallpapers will be injected here -->
         </div>
     </div>
 
-    <footer style="padding: 50px; text-align: center; border-top: 1px solid var(--glass); margin-top: 50px;">
-        <p style="color: var(--text-dim);">&copy; 2025 DUModZ Wallpaper Website. All Rights Reserved.</p>
-    </footer>
+    <!-- Lightbox Modal -->
+    <div class="modal" id="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <img src="" class="modal-img" id="modalImg">
+        <div class="modal-info">
+            <h2 id="modalTitle">Wallpaper Title</h2>
+            <div style="margin-top: 20px;">
+                <a href="" id="dlBtn" download class="modal-btn"><i class="fas fa-download"></i> Download Ultra HD</a>
+                <button class="modal-btn" style="background: rgba(255,255,255,0.1); color: #fff;" onclick="copyLink()"><i class="fas fa-link"></i> Copy Link</button>
+            </div>
+        </div>
+    </div>
 
     <script>
-        const jsonUrl = 'https://raw.githubusercontent.com/DarkUnkwonModZ/DUModZ-Wallpaper-Website/refs/heads/main/Json/data.json';
-        let allWallpapers = [];
-        const grid = document.getElementById('wallpaperGrid');
-        const categoryTabs = document.getElementById('categoryTabs');
-        const searchInput = document.getElementById('searchInput');
+        // রিয়েল টাইম আপডেটের জন্য 't=' প্যারামিটার যোগ করা হয়েছে
+        const jsonUrl = `https://raw.githubusercontent.com/DarkUnkwonModZ/DUModZ-Wallpaper-Website/refs/heads/main/Json/data.json?t=${new Date().getTime()}`;
+        
+        let wallData = [];
+        let favorites = JSON.parse(localStorage.getItem('wp_favs')) || [];
 
-        // Fetch Data from your GitHub Link
-        async function loadWallpapers() {
+        // ১. ডেটা ফেচ করা
+        async function fetchWalls() {
+            const grid = document.getElementById('mainGrid');
+            grid.innerHTML = Array(6).fill('<div class="wp-card"><div class="img-container"><div class="skeleton"></div></div></div>').join('');
+
             try {
-                const response = await fetch(jsonUrl);
-                allWallpapers = await response.json();
-                
-                generateCategories();
-                displayWallpapers(allWallpapers);
-            } catch (error) {
-                grid.innerHTML = `<p style="color: red; text-align: center;">Error loading wallpapers. Please check your JSON link!</p>`;
-                console.error("Fetch Error:", error);
+                const res = await fetch(jsonUrl);
+                wallData = await res.json();
+                renderWalls(wallData);
+                renderCats();
+                updateFavButton();
+            } catch (err) {
+                grid.innerHTML = `<p style="grid-column: 1/-1; text-align:center;">Failed to load wallpapers. Check JSON link.</p>`;
             }
         }
 
-        // Generate Categories Automatically from JSON Data
-        function generateCategories() {
-            const categories = ['All', ...new Set(allWallpapers.map(item => item.category))];
-            categoryTabs.innerHTML = '';
-            categories.forEach(cat => {
-                const chip = document.createElement('div');
-                chip.className = `cat-chip ${cat === 'All' ? 'active' : ''}`;
-                chip.innerText = cat;
-                chip.onclick = () => {
-                    document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
-                    chip.classList.add('active');
-                    filterData(cat);
-                };
-                categoryTabs.appendChild(chip);
-            });
-        }
-
-        // Display Wallpapers in Grid
-        function displayWallpapers(data) {
+        // ২. ওয়ালপেপার রেন্ডার করা
+        function renderWalls(data) {
+            const grid = document.getElementById('mainGrid');
             grid.innerHTML = '';
-            if(data.length === 0) {
-                grid.innerHTML = '<p style="text-align:center; width:100%;">No wallpapers found!</p>';
-                return;
-            }
 
             data.forEach((wp, index) => {
+                const isFav = favorites.includes(wp.url) ? 'active' : '';
                 const card = document.createElement('div');
-                card.className = 'card animate__animated animate__fadeInUp';
+                card.className = 'wp-card animate__animated animate__fadeInUp';
                 card.style.animationDelay = `${index * 0.05}s`;
-                
+
                 card.innerHTML = `
-                    <div class="card-img-wrapper" onclick="openPreview('${wp.url}')">
-                        <img src="${wp.url}" alt="${wp.title}" loading="lazy">
-                        <div class="card-overlay">
-                            <div class="card-info">
-                                <h3>${wp.title}</h3>
-                                <span>${wp.category}</span>
-                            </div>
-                            <a href="${wp.url}" download class="btn-download" target="_blank">
-                                <i class="fas fa-arrow-down"></i>
-                            </a>
+                    <div class="img-container">
+                        <div class="skeleton"></div>
+                        <img src="${wp.url}" alt="${wp.title}" onload="this.style.opacity=1; this.previousElementSibling.style.display='none';">
+                        <div class="card-actions">
+                            <button class="btn-circle btn-fav ${isFav}" onclick="toggleFav('${wp.url}')"><i class="fas fa-heart"></i></button>
+                            <button class="btn-circle" onclick="openModal('${wp.url}', '${wp.title}')"><i class="fas fa-expand"></i></button>
+                            <a href="${wp.url}" download class="btn-circle"><i class="fas fa-download"></i></a>
                         </div>
                     </div>
                 `;
@@ -403,50 +261,82 @@
             });
         }
 
-        // Filter by Category
-        function filterData(category) {
-            if(category === 'All') {
-                displayWallpapers(allWallpapers);
-            } else {
-                const filtered = allWallpapers.filter(item => item.category === category);
-                displayWallpapers(filtered);
-            }
+        // ৩. ডাইনামিক ক্যাটাগরি তৈরি
+        function renderCats() {
+            const catContainer = document.getElementById('dynamicCats');
+            const uniqueCats = ['All', ...new Set(wallData.map(w => w.category))];
+            
+            catContainer.innerHTML = uniqueCats.map(cat => `
+                <div class="cat-pill" onclick="filterData('${cat}', this)">${cat}</div>
+            `).join('');
+            catContainer.firstElementChild.classList.add('active');
         }
 
-        // Real-time Search Functionality
-        searchInput.addEventListener('input', (e) => {
+        // ৪. ফিল্টারিং এবং সার্চ
+        function filterData(cat, el) {
+            document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+            if(el) el.classList.add('active');
+
+            const filtered = cat === 'All' ? wallData : wallData.filter(w => w.category === cat);
+            renderWalls(filtered);
+        }
+
+        document.getElementById('mainSearch').addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase();
-            const filtered = allWallpapers.filter(wp => 
-                wp.title.toLowerCase().includes(term) || 
-                wp.category.toLowerCase().includes(term)
-            );
-            displayWallpapers(filtered);
+            const filtered = wallData.filter(w => w.title.toLowerCase().includes(term) || w.category.toLowerCase().includes(term));
+            renderWalls(filtered);
         });
 
-        // Advanced Modal Preview Logic
-        const modal = document.getElementById('previewModal');
-        const modalImg = document.getElementById('modalImg');
-        const modalDlLink = document.getElementById('modalDlLink');
-
-        function openPreview(url) {
-            modal.style.display = 'flex';
-            modalImg.src = url;
-            modalDlLink.href = url;
-            document.body.style.overflow = 'hidden'; // Stop scrolling
+        // ৫. ফেভারিট সিস্টেম
+        function toggleFav(url) {
+            if(favorites.includes(url)) {
+                favorites = favorites.filter(f => f !== url);
+            } else {
+                favorites.push(url);
+            }
+            localStorage.setItem('wp_favs', JSON.stringify(favorites));
+            updateFavButton();
+            // রেন্ডার রিফ্রেশ করা যাতে হার্ট আইকন কালার আপডেট হয়
+            const currentSearch = document.getElementById('mainSearch').value;
+            if(!currentSearch) renderWalls(wallData);
         }
 
-        function closePreview() {
-            modal.style.display = 'none';
+        function updateFavButton() {
+            document.getElementById('favCount').innerText = `❤️ Favorites (${favorites.length})`;
+        }
+
+        function showFavorites() {
+            const favWalls = wallData.filter(w => favorites.includes(w.url));
+            renderWalls(favWalls);
+        }
+
+        // ৬. মডাল প্রিভিউ
+        function openModal(url, title) {
+            const modal = document.getElementById('modal');
+            document.getElementById('modalImg').src = url;
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('dlBtn').href = url;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
             document.body.style.overflow = 'auto';
         }
 
-        // Close modal on outside click
-        modal.onclick = (e) => {
-            if(e.target === modal) closePreview();
+        function copyLink() {
+            const url = document.getElementById('modalImg').src;
+            navigator.clipboard.writeText(url);
+            alert('Link Copied to Clipboard!');
         }
 
-        // Initial Load
-        loadWallpapers();
+        // ইমেজ রাইট ক্লিক বন্ধ (Optional)
+        document.addEventListener('contextmenu', e => {
+            if (e.target.tagName === 'IMG') e.preventDefault();
+        });
+
+        fetchWalls();
     </script>
 </body>
 </html>
