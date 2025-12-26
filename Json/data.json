@@ -1,32 +1,92 @@
 [
     {
         "id": 1,
-        "title": "Mountain Lake",
+        "title": "Majestic Mountains",
         "category": "Nature",
-        "url": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1350&q=80"
+        "url": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=80"
     },
     {
         "id": 2,
-        "title": "Abstract Waves",
-        "category": "Abstract",
-        "url": "https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=1350&q=80"
+        "title": "Minimal Sunset",
+        "category": "Minimal",
+        "url": "https://images.unsplash.com/photo-1477346611705-65d1883cee1e?auto=format&fit=crop&w=1600&q=80"
     },
     {
         "id": 3,
-        "title": "Coding Setup",
-        "category": "Technology",
-        "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1350&q=80"
+        "title": "Abstract Waves",
+        "category": "Abstract",
+        "url": "https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=1600&q=80"
     },
     {
         "id": 4,
-        "title": "Minimal Sunset",
-        "category": "Minimal",
-        "url": "https://images.unsplash.com/photo-1477346611705-65d1883cee1e?auto=format&fit=crop&w=1350&q=80"
+        "title": "Futuristic Setup",
+        "category": "Technology",
+        "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80"
     },
     {
         "id": 5,
-        "title": "Forest Road",
+        "title": "Modern Architecture",
+        "category": "Architecture",
+        "url": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+        "id": 6,
+        "title": "Deep Forest Mist",
         "category": "Nature",
-        "url": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1350&q=80"
+        "url": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+        "id": 7,
+        "title": "Golden City Night",
+        "category": "Architecture",
+        "url": "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+        "id": 8,
+        "title": "Cyberpunk Neon",
+        "category": "Technology",
+        "url": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+        "id": 9,
+        "title": "Cosmic Galaxy",
+        "category": "Space",
+        "url": "https://images.unsplash.com/photo-1464802686167-b939a6910659?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+        "id": 10,
+        "title": "Dark Aesthetic Rock",
+        "category": "Dark",
+        "url": "https://images.unsplash.com/photo-1502134249126-9f3755a50d78?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+        "id": 11,
+        "title": "Minimalist Desktop",
+        "category": "Minimal",
+        "url": "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+        "id": 12,
+        "title": "Powerful Tiger",
+        "category": "Nature",
+        "url": "https://images.unsplash.com/photo-1474511320721-9a6ee39b48f7?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+        "id": 13,
+        "title": "Vibrant Fluid Art",
+        "category": "Abstract",
+        "url": "https://images.unsplash.com/photo-1500462859194-885860ad8e52?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+        "id": 14,
+        "title": "Snowy Winter Peak",
+        "category": "Nature",
+        "url": "https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+        "id": 15,
+        "title": "Macro Flower Detail",
+        "category": "Nature",
+        "url": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1600&q=80"
     }
 ]
