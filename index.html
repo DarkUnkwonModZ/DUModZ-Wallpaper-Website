@@ -1,306 +1,452 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wallpaper BD - Best Quality Wallpapers</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>DUModZ Wallpapers - Premium 4K Gallery</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css for smooth entrance -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
     <style>
-        /* CSS styling */
         :root {
-            --primary-color: #00d2ff;
-            --secondary-color: #3a7bd5;
-            --dark-bg: #0f0c29;
-            --card-bg: #1a1a2e;
-            --text-color: #ffffff;
+            --primary: #00f2fe;
+            --secondary: #4facfe;
+            --dark: #0a0b10;
+            --card-bg: #161b22;
+            --text-main: #ffffff;
+            --text-dim: #b1b1b1;
+            --glass: rgba(255, 255, 255, 0.05);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
-            background-color: var(--dark-bg);
-            color: var(--text-color);
+            background-color: var(--dark);
+            color: var(--text-main);
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Header & Search Area */
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--dark); }
+        ::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 10px; }
+
+        /* --- Header & Hero Section --- */
         header {
-            background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
-            padding: 50px 20px;
+            min-height: 60vh;
+            background: linear-gradient(rgba(10, 11, 16, 0.7), rgba(10, 11, 16, 0.9)), 
+                        url('https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            padding: 20px;
+            border-bottom: 1px solid var(--glass);
         }
 
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            background: -webkit-linear-gradient(var(--primary-color), var(--secondary-color));
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
         }
 
-        .search-container {
-            max-width: 600px;
-            margin: 0 auto;
+        .search-box {
             position: relative;
-        }
-
-        .search-container input {
             width: 100%;
-            padding: 15px 25px;
-            border-radius: 30px;
-            border: none;
-            outline: none;
-            font-size: 1.1rem;
-            background: #f1f1f1;
+            max-width: 600px;
+            margin-top: 30px;
         }
 
-        /* Category Buttons */
-        .categories {
-            margin-top: 25px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .cat-btn {
-            padding: 8px 20px;
-            background: transparent;
-            border: 2px solid var(--primary-color);
+        .search-box input {
+            width: 100%;
+            padding: 18px 25px 18px 55px;
+            border-radius: 50px;
+            border: 1px solid var(--glass);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             color: white;
-            border-radius: 20px;
-            cursor: pointer;
+            font-size: 1.1rem;
+            outline: none;
             transition: 0.3s;
         }
 
-        .cat-btn:hover, .cat-btn.active {
-            background: var(--primary-color);
-            color: #000;
+        .search-box input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
         }
 
-        /* Wallpaper Grid */
-        .container {
+        .search-box i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        /* --- Dynamic Categories --- */
+        .category-container {
+            padding: 40px 20px 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
             max-width: 1200px;
-            margin: 40px auto;
+            margin: 0 auto;
+        }
+
+        .cat-chip {
+            padding: 10px 22px;
+            background: var(--glass);
+            border: 1px solid var(--glass);
+            border-radius: 30px;
+            cursor: pointer;
+            color: var(--text-dim);
+            transition: 0.3s;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .cat-chip:hover, .cat-chip.active {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: #000;
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
+        }
+
+        /* --- Wallpaper Grid --- */
+        .main-container {
+            max-width: 1400px;
+            margin: 30px auto;
             padding: 0 20px;
         }
 
-        .wallpaper-grid {
+        .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 25px;
         }
 
-        .wallpaper-card {
+        .card {
             background: var(--card-bg);
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
             position: relative;
-            transition: transform 0.3s;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border: 1px solid var(--glass);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .wallpaper-card:hover {
-            transform: translateY(-10px);
+        .card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        .wallpaper-card img {
+        .card-img-wrapper {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+
+        .card img {
             width: 100%;
-            height: 250px;
+            height: 100%;
             object-fit: cover;
-            cursor: pointer;
+            transition: 0.5s;
         }
 
-        .card-info {
-            padding: 15px;
+        .card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
             display: flex;
             justify-content: space-between;
-            align-items: center;
-        }
-
-        .card-info h3 {
-            font-size: 1rem;
-            font-weight: 500;
-        }
-
-        .download-btn {
-            background: var(--primary-color);
-            color: #000;
-            padding: 8px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
+            align-items: flex-end;
+            opacity: 0;
             transition: 0.3s;
         }
 
-        .download-btn:hover {
-            background: var(--secondary-color);
-            color: #fff;
+        .card:hover .card-overlay {
+            opacity: 1;
         }
 
-        /* Modal Preview */
-        .modal {
+        .card-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .card-info span {
+            font-size: 0.8rem;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .btn-download {
+            width: 45px;
+            height: 45px;
+            background: var(--primary);
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .btn-download:hover {
+            transform: rotate(360deg);
+            background: #fff;
+        }
+
+        /* --- Advanced Modal (Preview) --- */
+        #previewModal {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 1000;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            backdrop-filter: blur(10px);
         }
 
-        .modal-content {
+        .modal-img {
             max-width: 90%;
-            max-height: 80%;
+            max-height: 80vh;
             border-radius: 10px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            object-fit: contain;
         }
 
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 40px;
+        .modal-controls {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .m-btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            border: none;
             cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
         }
 
-        footer {
-            text-align: center;
-            padding: 40px;
-            background: #0a0a1a;
-            margin-top: 50px;
+        .m-close { background: #ff4757; color: white; }
+        .m-dl { background: var(--primary); color: #000; text-decoration: none; }
+
+        /* --- Loading Spinner --- */
+        .loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            width: 100%;
         }
 
-        /* Responsive */
-        @media (max-width: 600px) {
-            header h1 { font-size: 1.8rem; }
-            .wallpaper-grid { grid-template-columns: 1fr; }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--glass);
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            header { min-height: 40vh; }
+            .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
+            .card-img-wrapper { height: 250px; }
+            .card-info h3 { font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1><i class="fas fa-image"></i> Premium Wallpapers</h1>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="সার্চ করুন (যেমন: Nature, Car, Dark)...">
-        </div>
-        <div class="categories" id="categoryTabs">
-            <button class="cat-btn active" onclick="filterCategory('All')">All</button>
-            <button class="cat-btn" onclick="filterCategory('Nature')">Nature</button>
-            <button class="cat-btn" onclick="filterCategory('Minimal')">Minimal</button>
-            <button class="cat-btn" onclick="filterCategory('Abstract')">Abstract</button>
-            <button class="cat-btn" onclick="filterCategory('Technology')">Technology</button>
+        <div class="hero-content animate__animated animate__fadeInDown">
+            <h1>DUModZ Premium Gallery</h1>
+            <p>High Quality Wallpapers for your Devices</p>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search by name or category...">
+            </div>
         </div>
     </header>
 
-    <div class="container">
-        <div class="wallpaper-grid" id="wallpaperGrid">
-            <!-- Wallpapers will be loaded here from JSON -->
-            <p style="text-align: center;">ওয়ালপেপার লোড হচ্ছে...</p>
+    <div class="category-container animate__animated animate__fadeIn" id="categoryTabs">
+        <div class="cat-chip active" onclick="filterData('All')">All Collection</div>
+        <!-- Categories will load dynamically -->
+    </div>
+
+    <main class="main-container">
+        <div class="grid" id="wallpaperGrid">
+            <div class="loader"><div class="spinner"></div></div>
+        </div>
+    </main>
+
+    <!-- Image Preview Modal -->
+    <div id="previewModal">
+        <img src="" alt="Preview" class="modal-img" id="modalImg">
+        <div class="modal-controls">
+            <button class="m-btn m-close" onclick="closePreview()"><i class="fas fa-times"></i> Close</button>
+            <a href="" id="modalDlLink" download class="m-btn m-dl"><i class="fas fa-download"></i> Download HD</a>
         </div>
     </div>
 
-    <!-- Image Modal -->
-    <div id="imageModal" class="modal">
-        <span class="close-modal">&times;</span>
-        <img class="modal-content" id="fullImage">
-    </div>
-
-    <footer>
-        <p>&copy; 2023 Wallpaper BD - Created with ❤️</p>
+    <footer style="padding: 50px; text-align: center; border-top: 1px solid var(--glass); margin-top: 50px;">
+        <p style="color: var(--text-dim);">&copy; 2025 DUModZ Wallpaper Website. All Rights Reserved.</p>
     </footer>
 
     <script>
-        let wallpapersData = [];
+        const jsonUrl = 'https://raw.githubusercontent.com/DarkUnkwonModZ/DUModZ-Wallpaper-Website/refs/heads/main/Json/data.json';
+        let allWallpapers = [];
         const grid = document.getElementById('wallpaperGrid');
+        const categoryTabs = document.getElementById('categoryTabs');
         const searchInput = document.getElementById('searchInput');
 
-        // JSON ফাইল থেকে ডেটা ফেচ করা
-        async function fetchWallpapers() {
+        // Fetch Data from your GitHub Link
+        async function loadWallpapers() {
             try {
-                // এখানে 'data.json' ফাইল থেকে তথ্য নিবে
-                const response = await fetch('data.json');
-                wallpapersData = await response.json();
-                displayWallpapers(wallpapersData);
+                const response = await fetch(jsonUrl);
+                allWallpapers = await response.json();
+                
+                generateCategories();
+                displayWallpapers(allWallpapers);
             } catch (error) {
-                console.error("ডেটা লোড করতে সমস্যা হয়েছে:", error);
-                grid.innerHTML = "<p>দুঃখিত, ওয়ালপেপার লোড করা সম্ভব হয়নি। 'data.json' ফাইলটি চেক করো।</p>";
+                grid.innerHTML = `<p style="color: red; text-align: center;">Error loading wallpapers. Please check your JSON link!</p>`;
+                console.error("Fetch Error:", error);
             }
         }
 
-        // ওয়ালপেপার কার্ড তৈরি করার ফাংশন
-        function displayWallpapers(items) {
-            grid.innerHTML = "";
-            if(items.length === 0) {
-                grid.innerHTML = "<p>কোনো ওয়ালপেপার পাওয়া যায়নি!</p>";
+        // Generate Categories Automatically from JSON Data
+        function generateCategories() {
+            const categories = ['All', ...new Set(allWallpapers.map(item => item.category))];
+            categoryTabs.innerHTML = '';
+            categories.forEach(cat => {
+                const chip = document.createElement('div');
+                chip.className = `cat-chip ${cat === 'All' ? 'active' : ''}`;
+                chip.innerText = cat;
+                chip.onclick = () => {
+                    document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+                    filterData(cat);
+                };
+                categoryTabs.appendChild(chip);
+            });
+        }
+
+        // Display Wallpapers in Grid
+        function displayWallpapers(data) {
+            grid.innerHTML = '';
+            if(data.length === 0) {
+                grid.innerHTML = '<p style="text-align:center; width:100%;">No wallpapers found!</p>';
                 return;
             }
 
-            items.forEach(item => {
+            data.forEach((wp, index) => {
                 const card = document.createElement('div');
-                card.className = 'wallpaper-card';
+                card.className = 'card animate__animated animate__fadeInUp';
+                card.style.animationDelay = `${index * 0.05}s`;
+                
                 card.innerHTML = `
-                    <img src="${item.url}" alt="${item.title}" onclick="openPreview('${item.url}')">
-                    <div class="card-info">
-                        <h3>${item.title}</h3>
-                        <a href="${item.url}" download="${item.title}" target="_blank" class="download-btn">
-                            <i class="fas fa-download"></i> Download
-                        </a>
+                    <div class="card-img-wrapper" onclick="openPreview('${wp.url}')">
+                        <img src="${wp.url}" alt="${wp.title}" loading="lazy">
+                        <div class="card-overlay">
+                            <div class="card-info">
+                                <h3>${wp.title}</h3>
+                                <span>${wp.category}</span>
+                            </div>
+                            <a href="${wp.url}" download class="btn-download" target="_blank">
+                                <i class="fas fa-arrow-down"></i>
+                            </a>
+                        </div>
                     </div>
                 `;
                 grid.appendChild(card);
             });
         }
 
-        // ক্যাটাগরি ফিল্টার
-        function filterCategory(cat) {
-            // Active button style
-            document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if(btn.innerText === cat) btn.classList.add('active');
-            });
-
-            if(cat === 'All') {
-                displayWallpapers(wallpapersData);
+        // Filter by Category
+        function filterData(category) {
+            if(category === 'All') {
+                displayWallpapers(allWallpapers);
             } else {
-                const filtered = wallpapersData.filter(item => item.category === cat);
+                const filtered = allWallpapers.filter(item => item.category === category);
                 displayWallpapers(filtered);
             }
         }
 
-        // সার্চ ফাংশন
+        // Real-time Search Functionality
         searchInput.addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase();
-            const filtered = wallpapersData.filter(item => 
-                item.title.toLowerCase().includes(term) || 
-                item.category.toLowerCase().includes(term)
+            const filtered = allWallpapers.filter(wp => 
+                wp.title.toLowerCase().includes(term) || 
+                wp.category.toLowerCase().includes(term)
             );
             displayWallpapers(filtered);
         });
 
-        // প্রিভিউ মোডাল
-        const modal = document.getElementById('imageModal');
-        const fullImg = document.getElementById('fullImage');
-        const closeBtn = document.querySelector('.close-modal');
+        // Advanced Modal Preview Logic
+        const modal = document.getElementById('previewModal');
+        const modalImg = document.getElementById('modalImg');
+        const modalDlLink = document.getElementById('modalDlLink');
 
         function openPreview(url) {
-            modal.style.display = "flex";
-            fullImg.src = url;
+            modal.style.display = 'flex';
+            modalImg.src = url;
+            modalDlLink.href = url;
+            document.body.style.overflow = 'hidden'; // Stop scrolling
         }
 
-        closeBtn.onclick = () => modal.style.display = "none";
-        window.onclick = (e) => { if(e.target == modal) modal.style.display = "none"; }
+        function closePreview() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
 
-        // পেজ লোড হলে কল হবে
-        fetchWallpapers();
+        // Close modal on outside click
+        modal.onclick = (e) => {
+            if(e.target === modal) closePreview();
+        }
+
+        // Initial Load
+        loadWallpapers();
     </script>
 </body>
 </html>
