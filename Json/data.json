@@ -88,5 +88,23 @@
         "title": "Macro Flower Detail",
         "category": "Nature",
         "url": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+        "id": 16,
+        "title": "Android Wallpaper 1",
+        "category": "Android",
+        "url": "https://raw.githubusercontent.com/DarkUnkwonModZ/DUModZ-Wallpaper-Website/refs/heads/main/IMG/android_wallpapwe_1.jpg"
+    },
+    {
+        "id": 17,
+        "title": "Android Wallpaper 2",
+        "category": "Android",
+        "url": "https://raw.githubusercontent.com/DarkUnkwonModZ/DUModZ-Wallpaper-Website/refs/heads/main/IMG/android_wallpapwe_2.jpg"
+    },
+    {
+        "id": 18,
+        "title": "Android Wallpaper 3",
+        "category": "Android",
+        "url": "https://raw.githubusercontent.com/DarkUnkwonModZ/DUModZ-Wallpaper-Website/refs/heads/main/IMG/android_wallpapwe_3.jpg"
     }
 ]
